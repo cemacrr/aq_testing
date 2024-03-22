@@ -162,24 +162,36 @@ body {
   margin: 0.25em;
 }
 
-.content_plot_img {
+.content_plot_img_container {
   margin-top: 1em;
   margin-bottom: 1em;
+  height: 0;
+  overflow: hidden;
+  padding-top: 48%;
+  position: relative;
+}
+
+.content_plot_img {
   margin-left: auto;
   margin-right: auto;
-  max-width: 90%;
-  max-height: 60%;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
 }
 
 @media only screen and (max-height: 1000px) {
-  .content_plot_img {
-    max-height: 50%;
+  .content_plot_img_container {
+    padding-top: 39%;
   }
 }
 
 @media only screen and (max-height: 700px) {
-  .content_plot_img {
-    max-height: 34%;
+  .content_plot_img_container {
+    padding-top: 30%;
   }
 }
 
@@ -187,7 +199,7 @@ body {
 
 .footer {
   background-color: #484848;
-  height: 5em;
+  height: 4em;
   margin-top: auto;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2),
               0 6px 20px 0 rgba(0, 0, 0, 0.19);
@@ -212,7 +224,7 @@ body {
 .footer_logo {
   -webkit-filter: grayscale(100%);
   filter: grayscale(100%);
-  max-height: 4em;
+  max-height: 3em;
   margin: 0.5em;
 }
 
