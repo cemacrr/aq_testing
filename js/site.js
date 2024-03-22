@@ -45,6 +45,9 @@ function content_control_toggle() {
 
 /* page loading / set up function: */
 function load_page() {
+  /* load data: */
+
+
   /* if window is less than 800px, initially hide controls: */
   if (document.body.clientWidth < 800) {
     content_control_toggle();
