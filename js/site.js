@@ -7,6 +7,11 @@ var site_vars = {
   'el_content_control': document.getElementById('content_control'),
   'el_content_control_close': document.getElementById('content_control_close_click'),
   'el_content_control_menu_img': document.getElementById('content_control_menu_img'),
+  /* select elements: */
+  'country_sel': document.getElementById('plot_control_country'),
+  'country_selected': null,
+  'city_sel': document.getElementById('plot_control_city'),
+  'city_selected': null,
   /* plot container element: */
   'el_content_plot': document.getElementById('content_plot'),
   /* plot image element: */
@@ -25,6 +30,71 @@ var site_vars = {
 };
 
 /* functions */
+
+/* update city information: */
+function update_cities(country, city) {
+  /* get country from site_vars: */
+  country = site_vars['country_selected'];
+  /* get cities for this country: */
+  var cities = [];
+  for (var i in site_vars['cities'][country]) {
+    cities.push(i);
+  };
+  /* get select element: */
+  var city_sel = site_vars['city_sel'];
+  /* if city is not recognised or defined, try get it from selected item: */
+  if ((cities.indexOf(city) < 0) || (city == null) ||
+      (city == undefined)) {
+     city = city_sel.options[city_sel.selectedIndex].value;
+  };
+  /* add city select html: */
+  var my_html = '';
+  for (var i = 0; i < cities.length; i++) {
+    var my_city = cities[i];
+    my_html += '<option value="' + my_city + '"';
+    if (my_city == city) {
+      my_html += ' selected';
+    };
+    my_html += '>' + my_city + '</option>';
+  };
+  city_sel.innerHTML = my_html;
+  /* store selected city: */
+  site_vars['city_selected'] = city;
+  /* if this is not the currently plotted country and city: */
+  if ((country != site_vars['country']) || (city != site_vars['city'])) {
+    /* update the plots: */
+    display_plots(country, city);
+  };
+};
+
+/* update country information: */
+function update_country(country, city) {
+  /* get country data: */
+  var countries = site_vars['countries'];
+  countries.sort();
+  /* get select elements: */
+  var country_sel = site_vars['country_sel'];
+  /* if country is not recognised or defined, try get it from selected item: */
+  if ((countries.indexOf(country) < 0) || (country == null) ||
+      (country == undefined)) {
+     country = country_sel.options[country_sel.selectedIndex].value;
+  };
+  /* add country select html: */
+  var my_html = '';
+  for (var i = 0; i < countries.length; i++) {
+    var my_country = countries[i];
+    my_html += '<option value="' + my_country + '"';
+    if (my_country == country) {
+      my_html += ' selected';
+    };
+    my_html += '>' + my_country + '</option>';
+  };
+  country_sel.innerHTML = my_html;
+  /* store selected country: */
+  site_vars['country_selected'] = country;
+  /* update city information: */
+  update_cities(country, city);
+};
 
 /* function to display plots */
 function display_plots(country, city) {
@@ -62,6 +132,8 @@ function display_plots(country, city) {
   site_vars['country'] = country;
   site_vars['city'] = city;
   site_vars['city_data'] = city_data;
+  /* update select elements: */
+  update_country(country, city);
 };
 
 /* function to load site data: */
@@ -135,3 +207,7 @@ window.addEventListener('load', function() {
   /* set up the page ... : */
   load_page();
 });
+
+/* select listeners: */
+site_vars['country_sel'].addEventListener('change', update_country);
+site_vars['city_sel'].addEventListener('change', update_cities);
