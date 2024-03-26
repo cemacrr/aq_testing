@@ -15,7 +15,7 @@ var site_vars = {
   'data_dir': 'data/',
   'data_file': 'aq_data.json',
   /* plots directory: */
-  'plots_dir': 'plots/',
+  'plots_dir': 'https://gws-access.jasmin.ac.uk/public/aq_stripes/plots',
   /* countries and cities data: */
   'countries': null,
   'country': null,
