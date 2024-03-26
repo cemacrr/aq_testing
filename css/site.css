@@ -54,6 +54,7 @@ body {
   background-color: #a8a8a8;
   margin: 0;
   padding: 0;
+  font-family: sans-serif, "Arial", "Helvetica";
 }
 
 /** main container: **/
@@ -142,6 +143,17 @@ body {
 
 .content_control_menu_img {
   width: 0;
+}
+
+.plot_control_label {
+  margin-left: 0.5em;
+  padding: 0.2em;
+}
+
+.plot_control_select {
+  margin-left: 0.5em;
+  padding: 0.2em;
+  min-width: 12em;
 }
 
 /** plots: **/

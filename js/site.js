@@ -5,7 +5,7 @@
 var site_vars = {
   /* control container elements: */
   'el_content_control': document.getElementById('content_control'),
-  'el_content_control_close': document.getElementById('content_control_close'),
+  'el_content_control_close': document.getElementById('content_control_close_click'),
   'el_content_control_menu_img': document.getElementById('content_control_menu_img'),
   /* plot container element: */
   'el_content_plot': document.getElementById('content_plot'),
@@ -105,10 +105,10 @@ function content_control_toggle() {
     content_control.style.minWidth = '12em';
     content_plot.style.flexBasis = '80%';
     content_control.style.flexBasis = '20%';
-    content_control_close.style.display = '';
+    content_control_close.style.color = '';
   } else {
     /* hide the controls: */
-    content_control_close.style.display = 'none';
+    content_control_close.style.color = '#ffffff';
     content_control.style.flexBasis = '0%';
     content_plot.style.flexBasis = '100%';
     content_control.style.minWidth = '0em';

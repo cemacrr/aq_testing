@@ -42,12 +42,29 @@
             class="content row">
         <!-- controls: ____________________________________________________ -->
         <div id="content_control"
-             class="content_control column">
+             class="content_control">
           <div id="content_control_close"
              class="content_control_close row flex_end">
-            <a href="javascript:void(0)"
+            <a id="content_control_close_click"
+               href="javascript:void(0)"
                class="content_control_close"
                onclick="content_control_toggle()">&times;</a>
+          </div>
+          <div class="plot_control">
+            <p>
+              <label class="plot_control_label">Country</label>
+            </p>
+            <select id="plot_control_country"
+                    class="plot_control_select">
+            </select>
+          </div>
+          <div class="plot_control">
+            <p>
+              <label class="plot_control_label">City</label>
+            </p>
+            <select id="plot_control_city"
+                    class="plot_control_select">
+            </select>
           </div>
         </div>
         <!-- plots: _______________________________________________________ -->
