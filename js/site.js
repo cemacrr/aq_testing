@@ -10,6 +10,11 @@ var site_vars = {
   /* select elements: */
   'country_sel': document.getElementById('plot_control_country'),
   'city_sel': document.getElementById('plot_control_city'),
+  /* plot selection element: */
+  'el_content_plot_select': document.getElementById('content_plot_select'),
+  /* plot selection images: */
+  'img_plot_select': 'img/control/select.png',
+  'img_plot_selected': 'img/control/selected.png',
   /* plot container element: */
   'el_content_plot': document.getElementById('content_plot'),
   /* plot image element: */
@@ -25,10 +30,42 @@ var site_vars = {
   'city_data': null,
   /* selected country and city: */
   'country': null,
-  'city': null
+  'city': null,
+  /* selected plot: */
+  'plot_index': null
 };
 
 /* functions */
+
+/* update plot selection icons: */
+function update_plot_selects() {
+  /* get plot information for selected city: */
+  var city_data = site_vars['city_data'];
+  var plots = city_data['plots'];
+  var plots_count = plots.length;
+  /* get selected plot index: */
+  var plot_index = site_vars['plot_index'];
+  /* plot selection element: */
+  var content_plot_select = site_vars['el_content_plot_select'];
+  /* clear out html: */
+  var content_plot_select_html = '';
+  /* for each available plot, add icon img: */
+  var img_plot_select = site_vars['img_plot_select'];
+  var img_plot_selected = site_vars['img_plot_selected'];
+  for (var i = 0 ; i < plots_count ; i++) {
+    /* check if this is selected plot: */
+    if (i == plot_index) {
+      content_plot_select_html += '<img src="' + img_plot_selected +
+                                  '" class="img_plot_selected">';
+    } else {
+      content_plot_select_html += '<img src="' + img_plot_select +
+                                  '" class="img_plot_select" ' +
+                                  'onclick="update_plot(' + i + ')">';
+    };
+  };
+  /* update html: */
+  content_plot_select.innerHTML = content_plot_select_html;
+};
 
 /* update city information: */
 function update_city() {
@@ -76,6 +113,14 @@ function update_city() {
   /* store selected city and data: */
   site_vars['city'] = city;
   site_vars['city_data'] = site_vars['cities'][country][city];
+  /* check for stored plot index, else set to 0: */
+  var plot_index = site_vars['plot_index'];
+  if ((plot_index == null) || (plot_index == undefined)) {
+    plot_index = 0;
+    site_vars['plot_index'] = plot_index;
+  };
+  /* update plot select icons: */
+  update_plot_selects();
   /* update plots: */
   display_plots();
 };
@@ -151,9 +196,31 @@ function display_plots() {
   var plots_dir = site_vars['plots_dir'] + '/' +  city_data['plots_dir'];
   var plots = city_data['plots'].sort();
   var plots_count = plots.length;
-  /* display first plot in plot element: */
+  /* display selected plot index: */
+  var plot_index = site_vars['plot_index'];
   var plot_el = site_vars['el_content_plot_img'];
-  plot_el.src = plots_dir + '/' + plots[0];
+  plot_el.src = plots_dir + '/' + plots[plot_index];
+};
+
+/* function to update plot by index: */
+function update_plot(plot_index) {
+  /* if no plot index, return: */
+  if ((plot_index == null) || (plot_index == undefined)) {
+    return;
+  };
+  /* check plot index is valid: */
+  var city_data = site_vars['city_data'];
+  var plots = city_data['plots'];
+  var plots_count = plots.length;
+  if ((plot_index < 0) || (plots_count <= plot_index)) {
+    return;
+  };
+  /* store plot index: */
+  site_vars['plot_index'] = plot_index;
+  /* update plots: */
+  display_plots();
+  /* update plot selection icons: */
+  update_plot_selects();
 };
 
 /* function to load site data: */
