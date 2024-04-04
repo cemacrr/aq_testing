@@ -158,6 +158,11 @@ body {
   min-width: 12em;
 }
 
+.img_plot_select, .img_plot_selected {
+  width: 1em;
+  height: 1em;
+}
+
 .img_plot_select {
   cursor: pointer;
 }
