@@ -180,7 +180,7 @@ function content_control_toggle() {
     content_control_close.style.color = '';
   } else {
     /* hide the controls: */
-    content_control_close.style.color = '#ffffff';
+    content_control_close.style.color = 'rgba(255, 255, 255, 0)';
     content_control.style.flexBasis = '0%';
     content_plot.style.flexBasis = '100%';
     content_control.style.minWidth = '0em';
