@@ -230,7 +230,7 @@ async function load_data() {
   var data_file = site_vars['data_file'];
   var data_url = data_dir + '/' + data_file;
   /* get data using fetch: */
-  await fetch(data_url).then(async function(data_req) {
+  await fetch(data_url, {'cache': 'no-cache'}).then(async function(data_req) {
     /* if successful: */
     if (data_req.status == 200) {
       /* store json information from request: */
