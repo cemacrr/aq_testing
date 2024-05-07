@@ -23,7 +23,7 @@ var site_vars = {
   'data_dir': 'data/',
   'data_file': 'aq_data.json',
   /* plots directory: */
-  'plots_dir': 'https://gws-access.jasmin.ac.uk/public/aq_stripes/plots',
+  'plots_dir': 'https://gws-access.jasmin.ac.uk/public/aq_stripes',
   /* countries and cities data: */
   'countries': null,
   'cities': null,
@@ -194,7 +194,7 @@ function display_plots() {
   /* get plot data for this city: */
   var city_data = site_vars['city_data'];
   var plots_dir = site_vars['plots_dir'] + '/' +  city_data['plots_dir'];
-  var plots = city_data['plots'].sort();
+  var plots = city_data['plots'];
   var plots_count = plots.length;
   /* display selected plot index: */
   var plot_index = site_vars['plot_index'];
