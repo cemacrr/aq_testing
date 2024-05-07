@@ -1,3 +1,4 @@
 *.swp
 plots/
+Plots/
 data/make_json.py
