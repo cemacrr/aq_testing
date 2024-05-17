@@ -222,6 +222,18 @@ body {
   }
 }
 
+/** dashboard: **/
+
+.content_db {
+  background-color: #ffffff;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2),
+              0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  flex-basis: 100%;
+  margin: 0em;
+  margin-top: 0.5em;
+  margin-bottom: 0.5em;
+}
+
 /** footer: **/
 
 .footer {
