@@ -75,6 +75,7 @@ body {
   margin-bottom: auto;
 }
 
+/*
 @media only screen and (min-width: 450px) {
   .header {
     background-image: url("../img/header/header.png");
@@ -83,6 +84,7 @@ body {
     background-size:  60%, 100%, contain, cover;
   }
 }
+*/
 
 @media only screen and (min-width: 1800px) {
   .header {
@@ -194,7 +196,7 @@ body {
   margin-bottom: 1em;
   height: 0;
   overflow: hidden;
-  padding-top: 48%;
+  padding-top: 60%;
   position: relative;
 }
 
@@ -212,13 +214,13 @@ body {
 
 @media only screen and (max-height: 1000px) {
   .content_plot_img_container {
-    padding-top: 39%;
+    padding-top: 51%;
   }
 }
 
 @media only screen and (max-height: 700px) {
   .content_plot_img_container {
-    padding-top: 30%;
+    padding-top: 42%;
   }
 }
 
